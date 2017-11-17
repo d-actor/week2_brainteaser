@@ -17,7 +17,7 @@ end
 
 def check
   @original.each do |letter|
-    @reverse << @original[:&]
+    @reverse.unshift << letter
   end
 
 binding.pry
