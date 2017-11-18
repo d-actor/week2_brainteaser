@@ -1,7 +1,7 @@
 require 'colorize'
 require 'pry'
 
-@original = []
+@word = []
 @reverse = []
 
 def menu
@@ -9,20 +9,16 @@ def menu
   puts "----PALINDROME CHECKER----".green
   puts "I can check to see if a word is a palindrome!".green
   puts "Enter the word you'd like to check: "
-  @word = STDIN.gets.strip.downcase
-  @original << @word.split("")
-  puts "You entered #{@word}.".yellow
+  @word = STDIN.gets.strip.downcase.gsub(" ", "").split("")
   check
 end
 
 def check
-  @original.each do |letter|
-    @reverse.unshift << letter
+  @word.each {|letter| @reverse.unshift(letter) }
+  if @word == @reverse
+    puts "Your entry is indeed a palindrome."
+  else
+    puts "Nope."
   end
-
-binding.pry
-
-
 end
-
 menu
